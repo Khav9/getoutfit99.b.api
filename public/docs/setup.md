@@ -367,6 +367,12 @@ php artisan db:seed
 php artisan migrate:fresh --seed
 ```
 
+## Symlink images
+
+```bash
+php artisan storage:link
+```
+
 ---
 
 # MVP Features
