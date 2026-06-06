@@ -22,6 +22,8 @@ class ProductResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'Product';
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Products & Categories';
+
     public static function form(Schema $schema): Schema
     {
         return ProductForm::configure($schema);
@@ -37,6 +39,12 @@ class ProductResource extends Resource
         return [
             //
         ];
+    }
+
+    // show the count of records in the navigation badge
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 
     public static function getPages(): array

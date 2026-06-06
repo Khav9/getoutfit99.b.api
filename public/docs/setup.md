@@ -235,6 +235,9 @@ Run migration:
 php artisan migrate
 ```
 
+step:
+- createPolicy file in Policies folder
+- set permission
 ---
 
 # 12. Install Pest Testing

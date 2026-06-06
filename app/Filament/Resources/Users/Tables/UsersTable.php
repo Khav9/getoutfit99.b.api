@@ -27,6 +27,10 @@ class UsersTable
                     ->copyable()
                     ->sortable(),
 
+                TextColumn::make('roles.name')
+                    ->label('Role')
+                    ->sortable(),
+
                 TextColumn::make('created_at')
                     ->label('Joined')
                     ->dateTime()
