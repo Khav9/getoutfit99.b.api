@@ -16,7 +16,13 @@ class ProductController extends Controller
     public function index()
     {
         $perPage = request()->query('per_page', 15);
-        $query = Product::with(['category', 'productImages']);
+
+        $query = Product::with([
+            'category',
+            'productImages',
+            'colors',
+            'brand',
+        ]);
 
         if ($categoryId = request()->query('category_id')) {
             $query->where('category_id', $categoryId);
@@ -55,7 +61,7 @@ class ProductController extends Controller
      */
     public function show(string $slug)
     {
-        $product = Product::with(['category', 'productImages'])->where('slug', $slug)->firstOrFail();
+        $product = Product::with(['category', 'productImages', 'colors', 'brand'])->where('slug', $slug)->firstOrFail();
 
         return response()->json($product);
     }

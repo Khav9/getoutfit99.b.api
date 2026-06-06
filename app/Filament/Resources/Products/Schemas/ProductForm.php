@@ -82,15 +82,49 @@ class ProductForm
                                     ->preload()
                                     ->required(),
 
+                                Select::make('brand_id')
+                                    ->relationship('brand', 'name')
+                                    ->searchable()
+                                    ->preload()
+                                    ->required(),
+
+                                Repeater::make('colors')
+                                    ->relationship()
+                                    ->schema([
+                                        TextInput::make('hex_code')
+                                            ->label('Hex Code')
+                                            ->required()
+                                            ->regex('/^#[0-9A-Fa-f]{6}$/')
+                                            ->placeholder('Choose color')
+                                            ->default('#FF5733')
+                                            ->prefixIcon('heroicon-o-swatch')
+                                            ->extraInputAttributes([
+                                                'type' => 'color',
+                                                'style' => 'width:50px; padding:2px; cursor:pointer;',
+                                            ]),
+                                    ])
+                                    ->defaultItems(1),
+
                                 TextInput::make('price_usd')
                                     ->label('Price (USD)')
                                     ->numeric()
                                     ->prefix('$')
+                                    ->default(0)
+                                    ->minValue(0)
                                     ->required(),
+
+                                TextInput::make('discount')
+                                    ->label('Discount')
+                                    ->numeric()
+                                    ->default(0)
+                                    ->minValue(0)
+                                    ->prefix('%'),
 
                                 TextInput::make('sale_price_usd')
                                     ->label('Sale Price (USD)')
                                     ->numeric()
+                                    ->default(0)
+                                    ->minValue(0)
                                     ->prefix('$'),
 
                                 TextInput::make('stock_qty')
