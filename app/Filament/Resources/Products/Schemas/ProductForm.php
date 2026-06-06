@@ -130,6 +130,7 @@ class ProductForm
                                                     ->label('Image')
                                                     ->image()
                                                     ->directory('products')
+                                                    ->visibility('public')
                                                     ->required(),
 
                                                 TextInput::make('sort_order')
