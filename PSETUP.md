@@ -1,12 +1,13 @@
-# E-Commerce API + Filament Dashboard Setup
+# E-Commerce API + Filament Dashboard Setup Project
 
 ## Tech Stack
 
 * Laravel 11
-* Filament v3
+* Filament v5
 * Laravel Sanctum
 * MySQL
 * Pest Testing
+* spatie/laravel-permission
 
 ---
 
