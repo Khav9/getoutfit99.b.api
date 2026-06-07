@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -24,12 +25,26 @@ class CategoryController extends Controller
     public function show(string $slug)
     {
         $perPage = request()->query('per_page', 15);
-        $query = Category::with(['products'])->where('slug', $slug);
 
+        // Find category by slug
+        $category = Category::where('slug', $slug)->firstOrFail();
+
+        // Query products that belong to this category
+        $query = Product::with([
+            'category',
+            'productImages',
+            'colors',
+            'brand',
+        ])->where('category_id', $category->id);
+
+        // Search product name
         if ($q = request()->query('q')) {
             $query->where('name', 'like', "%{$q}%");
         }
 
-        return response()->json($query->paginate($perPage));
+        return response()->json([
+            'category' => $category,
+            'products' => $query->paginate($perPage),
+        ]);
     }
 }
