@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\V1\AuthController;
 use App\Http\Controllers\API\V1\ProductController;
 use App\Http\Controllers\API\V1\CategoryController;
+use App\Http\Controllers\API\V1\PromotionController;
 
 Route::get('/v1/test', function () {
     return response()->json([
@@ -19,6 +20,9 @@ Route::prefix('v1')->group(function () {
     /*
         Public product routes
     */
+    Route::get('/promotions', [PromotionController::class, 'index']);
+    Route::get('/promotions/{slug}', [PromotionController::class, 'show']);
+
     Route::get('/products', [ProductController::class, 'index']);
     Route::get('/products/{id}', [ProductController::class, 'show']);
 
