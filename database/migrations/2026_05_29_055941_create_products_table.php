@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->decimal('price_usd', 10, 2);
-            $table->decimal('sale_price_usd', 10, 2)->nullable();
             $table->unsignedInteger('stock_qty')->default(0);
             $table->boolean('is_new_arrival')->default(false);
             $table->timestamps();

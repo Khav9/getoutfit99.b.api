@@ -113,20 +113,6 @@ class ProductForm
                                     ->minValue(0)
                                     ->required(),
 
-                                TextInput::make('discount')
-                                    ->label('Discount')
-                                    ->numeric()
-                                    ->default(0)
-                                    ->minValue(0)
-                                    ->prefix('%'),
-
-                                TextInput::make('sale_price_usd')
-                                    ->label('Sale Price (USD)')
-                                    ->numeric()
-                                    ->default(0)
-                                    ->minValue(0)
-                                    ->prefix('$'),
-
                                 TextInput::make('stock_qty')
                                     ->label('Stock Quantity')
                                     ->numeric()

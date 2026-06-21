@@ -35,6 +35,7 @@ class CategoryController extends Controller
             'productImages',
             'colors',
             'brand',
+            'promotionProducts.promotion',
         ])->where('category_id', $category->id);
 
         // Search product name
